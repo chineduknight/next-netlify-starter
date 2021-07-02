@@ -5,10 +5,11 @@ import "@fontsource/open-sans/700.css";
 import { softScriptTheme } from "styles/theme";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import wrapper from "lib/redux"
-
+import NavBar from 'components/NavBar'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={softScriptTheme}>
+      <NavBar />
       <ColorModeScript
         initialColorMode={softScriptTheme.config.initialColorMode}
       />
