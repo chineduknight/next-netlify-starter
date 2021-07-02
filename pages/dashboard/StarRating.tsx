@@ -2,10 +2,15 @@ import styled from '@emotion/styled'
 import { RootReducer } from 'lib/redux/reducers';
 import { rateScript } from 'lib/redux/scripts/action';
 import { useState } from 'react'
-import Ratings from 'react-ratings-declarative';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
 import { PUBLIC_PATHS } from 'routes/pagePath';
+import Ratings from 'react-ratings-declarative';
+// import dynamic from "next/dynamic";
+// const Ratings = dynamic(() => import("react-ratings-declarative"), {
+//   ssr: false,
+// });
+// const Ratings = dynamic<any>(import("react-ratings-declarative").then((module: any) => module.default));
 
 type StarRatingProps = {
   id?: string

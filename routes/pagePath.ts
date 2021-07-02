@@ -5,8 +5,8 @@
 export const PUBLIC_PATHS = {
   LOGIN: '/user/login',
   REGISTER: '/user/register',
-  FORGOT_PASS: '/user/forgot-password',
-  RESET_PASSWORD: '/user/reset-password',
+  FORGOT_PASS: '/user/forgotpassword',
+  RESET_PASSWORD: '/user/resetpassword',
   LOGOUT: "/user/logout",
   SINGLE_SCRIPT: '/scripts/:slug',
   DASHBOARD: '/dashboard',

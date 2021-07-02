@@ -1,10 +1,11 @@
 import React from 'react';
-import { ReactComponent as NoDataIcon } from './no_data.svg';
+// import { ReactComponent as NoDataIcon } from './no_data.svg';
 import styled from '@emotion/styled';
 
 const NoData = () => (
   <NoData.Wrapper>
-    <NoDataIcon />
+    {/* <NoDataIcon /> */}
+    <div>No dat Icon</div>
     <p>No data</p>
   </NoData.Wrapper>
 );

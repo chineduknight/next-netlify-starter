@@ -18,11 +18,12 @@ import {
 } from "@chakra-ui/react";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 // import { useHistory } from "react-router-dom";
+import { useRouter } from 'next/router'
 // import { FaSun, FaMoon } from "react-icons/fa";
 import SearchBar from "./SearchBar";
 import { HiOutlineSearch } from "react-icons/hi";
 import { BiChevronDown } from "react-icons/bi";
-// import { PROTECTED_PATHS, PUBLIC_PATHS } from "routes/pagePath";
+import { PROTECTED_PATHS, PUBLIC_PATHS } from "routes/pagePath";
 import { useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -41,8 +42,8 @@ const NavBar = (props: any) => {
     showSearch,
     setshowSearch,
   } = props;
-  // const { UPLOAD, DASHBOARD } = PROTECTED_PATHS;
-  // const history = useHistory();
+  const { UPLOAD, DASHBOARD } = PROTECTED_PATHS;
+  const history = useRouter();
   // const { colorMode, toggleColorMode } = useColorMode();
   const [mobile] = useMediaQuery("(min-width: 800px)");
 
@@ -80,7 +81,7 @@ const NavBar = (props: any) => {
                   color="#fff"
                   ml={2}
                   onClick={() => {
-                    // history.push(PUBLIC_PATHS.LOGIN);
+                    history.push(PUBLIC_PATHS.LOGIN);
                     setshowSideBar.off();
                   }}
                 >
@@ -97,7 +98,7 @@ const NavBar = (props: any) => {
                 w="100%"
                 fontWeight="normal"
                 onClick={() => {
-                  //  history.push(PUBLIC_PATHS.DASHBOARD); 
+                  history.push(PUBLIC_PATHS.DASHBOARD);
                   setshowSideBar.off();
                 }}
               >
@@ -111,7 +112,7 @@ const NavBar = (props: any) => {
                 w="100%"
                 fontWeight="normal"
                 onClick={() => {
-                  // history.push(user.success ? PROTECTED_PATHS.UPLOAD : PUBLIC_PATHS.LOGIN);
+                  history.push(user.success ? PROTECTED_PATHS.UPLOAD : PUBLIC_PATHS.LOGIN);
                   setshowSideBar.off();
                 }}
               >
@@ -187,7 +188,7 @@ const NavBar = (props: any) => {
           <Avatar
             name="softscript"
             src={"image"}
-            // onClick={() => history.push(DASHBOARD)}
+            onClick={() => history.push(DASHBOARD)}
             _hover={{
               cursor: "pointer",
             }}
@@ -227,7 +228,7 @@ const NavBar = (props: any) => {
             <Button
               leftIcon={<FaArrowAltCircleUp />}
               mr={1}
-            // onClick={() => history.push(UPLOAD)}
+              onClick={() => history.push(UPLOAD)}
             >
               Upload
             </Button>
@@ -246,7 +247,7 @@ const NavBar = (props: any) => {
                 </MenuList>
               </Menu>
             ) : (
-              <Button>
+              <Button onClick={() => history.push(PUBLIC_PATHS.LOGIN)}>
                 Log in
               </Button>
             )}

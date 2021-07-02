@@ -1,15 +1,15 @@
 import { useState } from "react";
-// import { useHistory } from "react-router-dom";
 import { RootReducer } from "lib/redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRequest } from "lib/redux/auth/action";
-// import { PUBLIC_PATHS } from 'routes/pagePath';
+import { useRouter } from 'next/router'
+import { PUBLIC_PATHS } from 'routes/pagePath';
 import { searchScript, searchResult } from 'lib/redux/scripts/action';
 import NavBarLayout from './NavBarLayout';
 import { useBoolean } from '@chakra-ui/react';
 import { convertParamsToString } from 'helpers/stringManipulation';
 const NavBar = () => {
-  // const history = useHistory();
+  const history = useRouter();
   const [searchText, setsearchText] = useState("");
   const [showSearch, setshowSearch] = useState(false);
   const user = useSelector<RootReducer, any>((state) => state.auth.user);
@@ -18,7 +18,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     dispatch(logoutRequest());
-    // history.push(PUBLIC_PATHS.LOGOUT);
+    history.push(PUBLIC_PATHS.LOGOUT);
   };
   const [showDropdown, setshowDropdown] = useBoolean();
 
@@ -48,9 +48,8 @@ const NavBar = () => {
     setshowDropdown.off()
     setsearchText(term)
     dispatch(searchResult(`?name=${term}&category=${currentCat}`))
-    // const url = convertParamsToString(PUBLIC_PATHS.SEARCH_RESULT, { text: term })
-    // console.log('url:', url)
-    // history.push(url)
+    const url = convertParamsToString(PUBLIC_PATHS.SEARCH_RESULT, { text: term })
+    history.push(url)
   }
   const handleHide = () => {
     setshowDropdown.off()
