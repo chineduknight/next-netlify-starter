@@ -1,9 +1,11 @@
+/* eslint-disable react/display-name */
 import { Button, Tag, Flex } from '@chakra-ui/react'
 import Table from 'components/CustomTable';
 import dayjs from 'dayjs';
 import { FaEye, FaCheck, FaTrash } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router'
 
 type AllScirptLayoutProp = {
   onOpen: () => void
@@ -14,7 +16,7 @@ type AllScirptLayoutProp = {
 }
 
 const AllScirptLayout = (props: AllScirptLayoutProp) => {
-  const history = useHistory();
+  const history = useRouter();
   const { scripts, deleteScript, verifyScript, rejectScript } = props;
   const columns = [
     {

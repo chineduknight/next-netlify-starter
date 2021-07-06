@@ -3,7 +3,7 @@ import { RootReducer } from 'lib/redux/reducers'
 import { getScripts } from 'lib/redux/scripts/action'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import ScriptCard from './ScriptCard'
+import ScriptCard from 'components/dashboard/ScriptCard'
 import { nanoid } from 'nanoid';
 const DashbordLayout = () => {
   const dispatch = useDispatch();

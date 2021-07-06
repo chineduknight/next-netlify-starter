@@ -1,5 +1,4 @@
-import SearchLayout from './SearchLayout';
-// import { useParams } from 'react-router-dom';
+import SearchLayout from 'components/search/SearchLayout'
 import { useSelector } from 'react-redux';
 import { RootReducer } from 'lib/redux/reducers';
 import { useRouter } from 'next/router'
@@ -7,7 +6,7 @@ import { useRouter } from 'next/router'
 const SearchResult = () => {
 
   const history = useRouter();
-  const text = history.query.text.toString();
+  const text = history.query?.text?.toString() || "";
   const { data } = useSelector((state: RootReducer) => state.scripts.searchResult);
 
   return (

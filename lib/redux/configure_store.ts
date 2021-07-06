@@ -4,18 +4,20 @@ import { defaultSingleObjectState } from 'utils/constants';
 import appReducer from "./reducers";
 import rootSaga from "./sagas";
 import { createWrapper } from "next-redux-wrapper"
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
+// declare global {
+//   interface Window {
+//     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+//   }
+// }
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const composeEnhancers =
-  typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+// const composeEnhancers =
+//   typeof window === 'object' &&
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
 const sagaMiddleWare = createSagaMiddleware();
 
 
@@ -40,14 +42,23 @@ const initialState = {
 }
 
 const store = () => {
+  // const store = createStore(
+  //   appReducer,
+  //   initialState,
+  //   composeEnhancers(applyMiddleware(sagaMiddleWare))
+  // );
   const store = createStore(
     appReducer,
     initialState,
-    composeEnhancers(applyMiddleware(sagaMiddleWare))
+    composeWithDevTools(
+      applyMiddleware(sagaMiddleWare)
+    )
   );
-
   sagaMiddleWare.run(rootSaga);
   return store;
 }
+
+
+
 
 export default createWrapper(store)

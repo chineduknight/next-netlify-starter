@@ -4,21 +4,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2';
 import { errorToast } from 'utils/hooks';
-import UploadModal from "./UploadModal";
-import UploadScriptLayout from "./UploadScriptLayout";
+import UploadModal from "components/uploads/UploadModal";
+import UploadScriptLayout from "components/uploads/UploadScriptLayout";
 import { useRouter } from 'next/router'
 import { RootReducer } from 'lib/redux/reducers';
+import { PUBLIC_PATHS } from 'routes/pagePath';
 
 const UploadScript = () => {
   const history = useRouter();
   const user = useSelector<RootReducer, any>((state) => state.auth.user);
 
-  useEffect(() => {
-    console.log('user:', user.success)
-    if (!user.success) {
-      history.push("/user/login")
-    }
-  }, [history, user])
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { processing, success } = useSelector<RootReducer, any>(
@@ -27,10 +23,16 @@ const UploadScript = () => {
   const userScripts = useSelector<RootReducer, any>(
     (state: any) => state.scripts.myScripts
   );
+  // useEffect(() => {
+  //   dispatch(myScripts());
+  // }, [dispatch]);
   useEffect(() => {
-    dispatch(myScripts());
-  }, [dispatch]);
-
+    if (!user.success) {
+      history.push(PUBLIC_PATHS.LOGIN)
+    } else {
+      dispatch(myScripts());
+    }
+  }, [history, user, dispatch])
 
   const [formValues, setFormValues] = useState({
     name: "",

@@ -7,7 +7,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import StarRating from "./StarRating";
+import StarRating from "../../pages/dashboard/StarRating";
 import { useWhiten } from "hook/colorHelper";
 import dayjs from "dayjs";
 import { baseURL } from 'services/httpService'

@@ -228,7 +228,9 @@ const NavBar = (props: any) => {
             <Button
               leftIcon={<FaArrowAltCircleUp />}
               mr={1}
-              onClick={() => history.push(UPLOAD)}
+              onClick={() =>
+                history.push(user.success ? PROTECTED_PATHS.UPLOAD : PUBLIC_PATHS.LOGIN)
+              }
             >
               Upload
             </Button>

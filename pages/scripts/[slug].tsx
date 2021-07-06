@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import ScriptPageLayout from './ScriptPageLayout'
+import ScriptPageLayout from 'components/scripts/ScriptPageLayout'
 import { useRouter } from 'next/router'
 import { PUBLIC_PATHS } from 'routes/pagePath';
 import CustomSpinner from 'components/CustomSpinner';
